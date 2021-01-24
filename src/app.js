@@ -32,13 +32,6 @@ app.use(function validateBearerToken(req, res, next) {
 })
 app.use('/api/scores', scoresRouter)
 
-
-
-
-
-
-
-
 app.use(function errorHandler(error, req, res, next) {
   let response
   if (NODE_ENV === 'production') {
