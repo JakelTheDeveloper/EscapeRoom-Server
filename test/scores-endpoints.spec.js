@@ -1,6 +1,7 @@
 const { expect } = require('chai')
 const knex = require('knex')
 const app = require('../src/app')
+require('dotenv').config()
 const { makeScoresArray } = require('./scores.fixtures')
 
 describe('Scores Endpoints', function () {
@@ -24,6 +25,7 @@ describe('Scores Endpoints', function () {
             it(`responds with 200 and an empty list`, () => {
                 return supertest(app)
                     .get('/api/scores')
+                    .set('Authorization',`Bearer ${process.env.API_TOKEN}`)
                     .expect(200, [])
             })
         })
@@ -39,6 +41,7 @@ describe('Scores Endpoints', function () {
             it('GET /scores responds with 200 and all of the scores', () => {
                 return supertest(app)
                     .get('/api/scores')
+                    .set('Authorization',`Bearer ${process.env.API_TOKEN}`)
                     .expect(200, testScores)
             })
         })
@@ -53,6 +56,7 @@ describe('Scores Endpoints', function () {
             }
             return supertest(app)
                 .post('/api/scores')
+                .set('Authorization',`Bearer ${process.env.API_TOKEN}`)
                 .send(newScore)
                 .expect(201)
                 .expect(res => {
@@ -66,6 +70,7 @@ describe('Scores Endpoints', function () {
         it(`responds with 400 and an error message when the 'username' is missing`, () => {
             return supertest(app)
                 .post('/api/scores')
+                .set('Authorization',`Bearer ${process.env.API_TOKEN}`)
                 .send({
                     hours: 0,
                     minutes: 2,

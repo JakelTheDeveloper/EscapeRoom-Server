@@ -22,16 +22,14 @@ scoresRouter
     .post(bodyParser, (req, res, next) => {
         const { username, hours, minutes, seconds } = req.body;
         if (!username) {
-            logger.error('Name Required')
             return res
                 .status(400)
                 .json({error:{message:'Name required'}});
         }
         if (username.length > 8) {
-            logger.error('Name must be 8 or less characters!')
             return res
                 .status(400)
-                .json({error:{message:'Name required'}});
+                .json({error:{message:'Name must be 8 or less characters!'}});
         }
         const newScore = { username, hours, minutes, seconds }
         scoresService.insertScore(
