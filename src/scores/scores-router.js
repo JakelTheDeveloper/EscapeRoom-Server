@@ -27,6 +27,12 @@ scoresRouter
                 .status(400)
                 .json({error:{message:'Name required'}});
         }
+        if (username.length > 8) {
+            logger.error('Name must be 8 or less characters!')
+            return res
+                .status(400)
+                .json({error:{message:'Name required'}});
+        }
         const newScore = { username, hours, minutes, seconds }
         scoresService.insertScore(
             req.app.get('db'),
