@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS highscore_data;
