@@ -7,14 +7,17 @@ const logger = require('../logger')
 
 scoresRouter
     .route('/')
-    .get((req, res, next) => {
-        scoresService.getAllScores(
+    .get(async(req, res, next) => {
+        try{
+       const scores = await scoresService.getAllScores(
             req.app.get('db')
-        )
-            .then(scores => {
-                res.json(scores)
-            })
-            .catch(next)
+       )
+       const data = await scores
+       res.status(200).json(data)
+            next()
+       }catch(error){
+           next(error)
+       }
     })
     .post(bodyParser, (req, res, next) => {
         const { username, hours, minutes, seconds } = req.body;
