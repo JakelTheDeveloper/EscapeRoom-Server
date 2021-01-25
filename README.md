@@ -29,7 +29,13 @@ This api allows you to use GET and POST methods to read and submit highscores to
  
 
 ``` 
-                    method: GET 
+                    method: 'GET' 
+```
+
+```
+                    fetch(`${config.URL}/api/scores`, {headers: {
+                        'authorization': `Bearer ${config.API_KEY}`,
+                    }})
 ```
 
 #### URL: 
@@ -39,6 +45,12 @@ This api allows you to use GET and POST methods to read and submit highscores to
 ```
 
 #### DESCRIPTION: 
+
+
+
+``` 
+                    method: 'POST'
+```
 
 ``` 
                     method: 'POST',
