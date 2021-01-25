@@ -38,11 +38,6 @@ This api allows you to use GET and POST methods to read and submit highscores to
                     }})
 ```
 
-#### URL: 
-
-```
-                    https://desolate-dusk-00206.herokuapp.com/api/scores
-```
 
 #### DESCRIPTION: 
 
