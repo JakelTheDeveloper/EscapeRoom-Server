@@ -36,6 +36,8 @@ This api allows you to use GET and POST methods to read and submit highscores to
                     fetch(`${config.URL}/api/scores`, {headers: {
                         'authorization': `Bearer ${config.API_KEY}`,
                     }})
+
+                    expect(200)
 ```
 
 
