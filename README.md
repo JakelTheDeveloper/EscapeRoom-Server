@@ -62,4 +62,3 @@ This api allows you to use GET and POST methods to read and submit highscores to
 
                     expect(201)
 ```      
-```
